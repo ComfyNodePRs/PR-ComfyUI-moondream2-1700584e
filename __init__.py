@@ -9,13 +9,8 @@ class moondream2_DownLoad:
     @classmethod
     def INPUT_TYPES(s):
         return { "required": {
-            "size": (
-                ["0.5b", "2b"],
-                { "default": "2b" }),
-
-            "quant": (
-                ["int4", "int8"],
-                { "default": "int8" })
+            "size": (["0.5b", "2b"], { "default": "2b" }),
+            "quant": (["int4", "int8"], { "default": "int8" })
         } }
 
     RETURN_TYPES = ("moondream2", )
@@ -28,7 +23,8 @@ class moondream2_DownLoad:
         # download gzipped model
         gz = huggingface_hub.hf_hub_download(
             repo_id="vikhyatk/moondream2",
-            filename=f"{name}.gz", revision="onnx")
+            filename=f"{name}.gz", revision="onnx"
+        )
 
         dest.parent.mkdir(exist_ok=True, parents=True)
 
@@ -40,7 +36,8 @@ class moondream2_DownLoad:
         # delete the gzip from hf cache
         url = huggingface_hub.hf_hub_url(
             repo_id="vikhyatk/moondream2",
-            filename=f"{name}.gz", revision="onnx")
+            filename=f"{name}.gz", revision="onnx"
+        )
 
         hash_ = huggingface_hub \
             .get_hf_file_metadata(url).commit_hash
@@ -86,10 +83,7 @@ class moondream2_Caption:
             "model": ("moondream2", ),
             "md2_image": ("MD2_IMAGE", ),
 
-            "length": (
-                ["short", "long"],
-                { "default": "short" }),
-
+            "length": (["short", "long"], { "default": "short" }),
             "max_tokens": ("INT", { "default": 512 })
         } }
 
@@ -104,7 +98,8 @@ class moondream2_Caption:
 
         result = model.caption(
             md2_image, length, stream=False,
-            settings={ "max_tokens": max_tokens })
+            settings={ "max_tokens": max_tokens }
+        )
 
         return (result["caption"], )
 
@@ -128,7 +123,8 @@ class moondream2_Query:
     def caption(self, model, md2_image, question, max_tokens):
         result = model.query(
             md2_image, question, stream=False,
-            settings={ "max_tokens": max_tokens })
+            settings={ "max_tokens": max_tokens }
+        )
 
         return (result["answer"], )
 
