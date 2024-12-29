@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-moondream2"
+description = "nodes for nightly moondream2 VLM inference\nsupports only captioning and visual queries at the moment"
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["huggingface-hub", "numpy", "onnxruntime", "onnxruntime-gpu", "pillow", "tokenizers"]
+
+[project.urls]
+Repository = "https://github.com/zhilemann/ComfyUI-moondream2"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-moondream2"
+Icon = ""
