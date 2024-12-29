@@ -10,6 +10,6 @@ Repository = "https://github.com/zhilemann/ComfyUI-moondream2"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "zhilemann"
 DisplayName = "ComfyUI-moondream2"
 Icon = ""
